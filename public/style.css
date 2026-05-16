@@ -1,0 +1,175 @@
+/* =========================================================================
+   NEURO-HEAL PREMIUM STYLESHEET — MIDNIGHT CALM (DARK MODE)
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+    /* === Light Wellness Backgrounds === */
+    --bg-base: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F1F5F9;
+    --surface-rgb: 255, 255, 255;
+    --subtle-rgb: 248, 250, 252;
+    --border-light: rgba(14, 165, 233, 0.1);
+    --border-strong: rgba(14, 165, 233, 0.3);
+    --border-hover: rgba(14, 165, 233, 0.4);
+    --shadow-soft: rgba(148, 163, 184, 0.1);
+    --shadow-hover: rgba(148, 163, 184, 0.2);
+    --splash-gradient: linear-gradient(160deg, #E0F2FE 0%, #CCFBF1 45%, #FFFFFF 100%);
+    --footer-gradient: linear-gradient(135deg, #F1F5F9 0%, #F8FAFC 60%, #F1F5F9 100%);
+
+    /* === Text === */
+    --text-main: #1E293B;
+    --text-muted: #64748B;
+    --text-light: #94A3B8;
+
+    /* === Primary Gradient (Mint → Soft Teal) === */
+    --primary-gradient: linear-gradient(135deg, #34D399 0%, #0EA5E9 100%);
+    --secondary-gradient: linear-gradient(135deg, #FDBA74 0%, #F472B6 100%);
+
+    /* === Accent Colors === */
+    --accent-sky: #38BDF8;
+    --accent-cyan: #0EA5E9;
+    --accent-blue: #3B82F6;
+    --accent-teal: #14B8A6;
+    --accent-rose: #F43F5E;
+    --accent-amber: #F59E0B;
+    --accent-emerald: #10B981;
+    --accent-purple: #8B5CF6;
+
+    /* === Semantic === */
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* === Card / Panel Surface === */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(var(--surface-rgb), 1);
+    --glass-shadow: 0 8px 32px rgba(148, 163, 184, 0.15), inset 0 1px 0 rgba(var(--surface-rgb), 0.8);
+
+    /* === Typography === */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+}
+
+body.dark-theme {
+    --bg-base: #050505;
+    --bg-surface: #0a0a0a;
+    --bg-subtle: #0f0f0f;
+    --surface-rgb: 10, 10, 10;
+    --subtle-rgb: 4, 4, 4;
+    --text-main: #FFFFFF;
+    --text-muted: #A1A1AA;
+    --text-light: #71717A;
+    --primary-gradient: linear-gradient(135deg, #0cebeb 0%, #20e3b2 50%, #29ffc6 100%);
+    --secondary-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    --accent-sky: #0cebeb;
+    --accent-cyan: #20e3b2;
+    --border-light: rgba(255, 255, 255, 0.04);
+    --border-strong: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(32, 227, 178, 0.4);
+    --shadow-soft: rgba(0, 0, 0, 0.5);
+    --shadow-hover: rgba(32, 227, 178, 0.15);
+    --splash-gradient: linear-gradient(160deg, #020202 0%, #0a0a0a 45%, #020202 100%);
+    --footer-gradient: linear-gradient(135deg, #050505 0%, #0a0a0a 60%, #050505 100%);
+    --glass-bg: rgba(10, 10, 10, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(14, 165, 233, 0.25);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-sky);
+}
+
+/* =========================================================================
+   DYNAMIC BACKGROUND ORBS
+   ========================================================================= */
+.bg-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.45;
+    animation: float 20s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, rgba(248, 250, 252, 0) 70%);
+    top: -10%;
+    left: -10%;
+}
+
+.orb-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(248, 250, 252, 0) 70%);
+    bottom: -20%;
+    right: -10%;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(234, 179, 8, 0.1) 0%, rgba(248, 250, 252, 0) 70%);
+    top: 40%;
+    left: 40%;
+    animation-duration: 25s;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, 50px) scale(1.1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+(truncated for brevity in this patch)
