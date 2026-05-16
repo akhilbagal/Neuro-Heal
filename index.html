@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro-Heal | Premium Mental Health Portal</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Dynamic Background Elements -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- Splash Screen (Cinematic Animation) -->
+    <div id="splash-screen">
+        <div class="splash-bg-glow"></div>
+        <div class="splash-content">
+            <div class="splash-logo-wrapper">
+                <i class="fa-solid fa-brain splash-icon"></i>
+                <div class="splash-ring"></div>
+                <div class="splash-ring ring-2"></div>
+            </div>
+            <h1 class="splash-title">
+                <span class="splash-letter" style="--i:0">N</span><span class="splash-letter" style="--i:1">e</span><span class="splash-letter" style="--i:2">u</span><span class="splash-letter" style="--i:3">r</span><span class="splash-letter" style="--i:4">o</span><span class="splash-dash" style="--i:5">-</span><span class="splash-letter" style="--i:6">H</span><span class="splash-letter" style="--i:7">e</span><span class="splash-letter" style="--i:8">a</span><span class="splash-letter" style="--i:9">l</span>
+            </h1>
+            <p class="splash-subtitle">Elevating Your Mental Well-being</p>
+            <div class="splash-loader-bar"><div class="splash-loader-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Daily Check-in Modal -->
+    <div id="daily-checkin-modal" class="modal-overlay hidden">
+        <div class="modal-content glass-panel">
+            <button class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h2>Daily Check-in 🌟</h2>
+                <p>Take a moment for yourself. How are you feeling today?</p>
+            </div>
+            <div class="mood-selection-grid">
+                <button class="mood-btn" data-mood="excellent">
+                    <span class="emoji">🌟</span>
+                    <span class="label">Excellent</span>
+                </button>
+                <button class="mood-btn" data-mood="good">
+                    <span class="emoji">😊</span>
+                    <span class="label">Good</span>
+                </button>
+                <button class="mood-btn" data-mood="average">
+                    <span class="emoji">😐</span>
+                    <span class="label">Average</span>
+                </button>
+                <button class="mood-btn" data-mood="bad">
+                    <span class="emoji">😔</span>
+                    <span class="label">Bad</span>
+                </button>
+                <button class="mood-btn" data-mood="terrible">
+                    <span class="emoji">😣</span>
+                    <span class="label">Not at all good</span>
+                </button>
+            </div>
+            <div id="checkin-feedback" class="hidden feedback-box">
+                <p>Thank you for sharing. Your mood has been logged in your Emotion Journal.</p>
+                <button class="btn primary-btn btn-small nav-btn mt-3" data-target="dashboard">View Insights</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application Container -->
+    <div id="main-content" class="hidden">
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar glass-panel">
+            <div class="sidebar-brand nav-link" data-target="home">
+                <div class="brand-icon"><i class="fa-solid fa-brain"></i></div>
+                <span class="brand-text">Neuro-Heal</span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="nav-label">Overview</li>
+                <li><a href="#home" class="nav-link active" data-target="home"><i class="fa-solid fa-house"></i>
+                        <span>Home</span></a></li>
+                <li><a href="#dashboard" class="nav-link" data-target="dashboard"><i class="fa-solid fa-chart-pie"></i>
+                        <span>AI Insights</span></a></li>
+
+                <li class="nav-label">Tools</li>
+                <li><a href="#relax" class="nav-link" data-target="relax"><i
+                            class="fa-solid fa-gamepad"></i> <span>Relax Zone</span></a></li>
+                <li><a href="#journal" class="nav-link" data-target="journal"><i
+                            class="fa-solid fa-book-journal-whills"></i> <span>Emotion Journal</span></a></li>
+
+                <li class="nav-label">Connect</li>
+                <li><a href="#therapist-match" class="nav-link" data-target="therapist-match"><i
+                            class="fa-solid fa-user-check"></i> <span>Smart Matching</span></a></li>
+
+                <li><a href="#community" class="nav-link" data-target="community"><i class="fa-solid fa-users"></i>
+                        <span>Community Space</span></a></li>
+
+                <li class="nav-label">Preferences</li>
+                <li><a href="#settings" class="nav-link" data-target="settings"><i class="fa-solid fa-gear"></i>
+                        <span>Settings</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- Top Header for Mobile -->
+        <header class="mobile-header glass-panel">
+            <div class="mobile-brand">
+                <i class="fa-solid fa-brain"></i> Neuro-Heal
+            </div>
+            <button class="mobile-menu-toggle"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+
+            <!-- HOME VIEW -->
+            <div id="home" class="view-section active fade-in">
+                <div class="hero-card glass-panel gradient-border">
+                    <div class="hero-content">
+                        <span class="tag">Next-Gen Mental Wellness</span>
+                        <h1>Your Personal Space for <br><span class="gradient-text">Emotional Healing</span></h1>
+                        <p>Track your mood, gain AI-driven insights, and connect with professionals anonymously. A
+                            premium experience designed for your peace of mind.</p>
+                        <div class="hero-actions">
+                            <button class="btn primary-btn nav-link" data-target="dashboard">View My Insights <i
+                                    class="fa-solid fa-arrow-right"></i></button>
+                            <button class="btn outline-btn nav-link" data-target="checker">Take Assessment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions-grid mt-4">
+                    <div class="glass-card feature-card nav-link" data-target="therapist-match">
+                        <div class="card-icon bg-purple"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h3>Smart Matching</h3>
+                        <p>Take a quick quiz to find the perfect therapist for your specific needs.</p>
+                    </div>
+                    <div class="glass-card feature-card nav-link" data-target="journal">
+                        <div class="card-icon bg-blue"><i class="fa-solid fa-feather-pointed"></i></div>
+                        <h3>Emotion Journal</h3>
+                        <p>Write your thoughts and let our system track your emotional triggers over time.</p>
+                    </div>
+                    <div class="glass-card feature-card nav-link" data-target="self-care">
+                        <div class="card-icon bg-teal"><i class="fa-solid fa-leaf"></i></div>
+                        <h3>Self-Care Plan</h3>
+                        <p>Get personalized meditation and exercise suggestions based on your state.</p>
+                    </div>
+                    <div class="glass-card feature-card nav-link" data-target="community">
+                        <div class="card-icon bg-orange"><i class="fa-solid fa-comments"></i></div>
+                        <h3>Community Space</h3>
+                        <p>Share experiences anonymously and find support in a safe environment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI INSIGHTS & MOOD DASHBOARD -->
+            <div id="dashboard" class="view-section fade-in hidden">
+                <div class="section-header">
+                    <h2><span class="gradient-text">AI Mood Analysis</span> & Progress</h2>
+                    <p>Track your emotional journey and discover hidden patterns.</p>
+                </div>
+
+                <div class="dashboard-grid-layout">
+                    <!-- Chart Section -->
+                    <div class="glass-panel main-chart-panel">
+                        <div class="panel-header">
+                            <h3>Mood Fluctuation (Last 7 Days)</h3>
+                            <button id="download-report-btn" class="btn icon-btn" title="Download Report"><i
+                                    class="fa-solid fa-download"></i></button>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="moodChart" height="250"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- AI Insights Snippet -->
+                    <div class="glass-panel ai-insight-panel">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-robot"></i> AI Pattern Analysis</h3>
+                        </div>
+                        <div class="insight-content">
+                            <div class="insight-item warning">
+                                <i class="fa-solid fa-bolt"></i>
+                                <div>
+                                    <h4>Stress Spike Detected</h4>
+                                    <p>We noticed your stress levels consistently peak on Tuesday evenings. Consider
+                                        scheduling a <a href="#" class="inline-link nav-link"
+                                            data-target="self-care">meditation session</a>.</p>
+                                </div>
+                            </div>
+                            <div class="insight-item positive">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                                <div>
+                                    <h4>Improving Trend</h4>
+                                    <p>Your overall mood score has improved by 15% compared to last week. Great job
+                                        maintaining your journal!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW DASHBOARD LOGS SECTION -->
+                <div class="glass-panel mt-4">
+                    <div class="panel-header">
+                        <h3><i class="fa-solid fa-list"></i> Recent Mood Entries</h3>
+                        <button class="btn icon-btn clear-logs-btn" style="color: var(--danger); border: 1.5px solid rgba(220, 38, 38, 0.2);" title="Clear All Logs"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <div id="dashboard-recent-logs" class="entries-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMOTION JOURNAL -->
+            <div id="journal" class="view-section fade-in hidden">
+                <div class="section-header">
+                    <h2>Emotion <span class="gradient-text">Journal</span></h2>
+                    <p>Express your thoughts freely. Your entries are private and secure.</p>
+                </div>
+
+                <div class="journal-layout">
+                    <div class="glass-panel editor-panel">
+                        <input type="text" id="journal-title" class="clean-input" placeholder="Title your entry...">
+                        <textarea id="journal-content" class="clean-textarea"
+                            placeholder="How are you feeling right now? What's on your mind?..." rows="8"></textarea>
+                        <div class="editor-footer">
+                            <div class="mood-tagging">
+                                <span>Tag Mood:</span>
+                                <select id="journal-mood-tag" class="glass-select">
+                                    <option value="happy">Happy</option>
+                                    <option value="calm">Calm</option>
+                                    <option value="anxious">Anxious</option>
+                                    <option value="sad">Sad</option>
+                                    <option value="angry">Angry</option>
+                                </select>
+                            </div>
+                            <button id="save-journal-btn" class="btn primary-btn"><i class="fa-solid fa-check"></i> Save
+                                Entry</button>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel entries-panel">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin: 0;">Recent Entries</h3>
+                            <button class="btn outline-btn btn-small clear-logs-btn" style="border-color: rgba(220, 38, 38, 0.3); color: var(--danger);"><i class="fa-solid fa-trash"></i> Clear All</button>
+                        </div>
+                        <div id="journal-entries-list" class="entries-list">
+                            <!-- Entries populated by JS -->
+                            <div class="empty-state">
+                                <i class="fa-solid fa-book-open"></i>
+                                <p>No entries yet. Start writing to see them here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- SMART THERAPIST MATCHING -->
+            <div id="therapist-match" class="view-section fade-in hidden">
+                <div class="section-header">
+                    <h2>Smart <span class="gradient-text">Therapist Match</span></h2>
+                    <p>Answer 3 quick questions to find the professional best suited to help you.</p>
+                </div>
+
+                <div class="glass-panel match-wizard">
+                    <div id="match-quiz">
+                        <!-- Q1 -->
+                        <div class="quiz-step active" data-step="1">
+                            <h3>1. What is your primary reason for seeking help today?</h3>
+                            <div class="options-grid">
+                                <button class="match-option" data-tag="anxiety">Managing Anxiety & Stress</button>
+                                <button class="match-option" data-tag="depression">Overcoming Depression</button>
+                                <button class="match-option" data-tag="relationships">Relationship Issues</button>
+                                <button class="match-option" data-tag="general">General Life Coaching</button>
+                            </div>
+                        </div>
+                        <!-- Q2 -->
+                        <div class="quiz-step hidden" data-step="2">
+                            <h3>2. What therapy style do you prefer?</h3>
+                            <div class="options-grid">
+                                <button class="match-option" data-tag="cbt">Structured & Goal-Oriented (CBT)</button>
+                                <button class="match-option" data-tag="talk">Open Exploration (Talk Therapy)</button>
+                                <button class="match-option" data-tag="holistic">Mindfulness & Holistic</button>
+                                <button class="match-option" data-tag="psych">Medical & Psychiatric</button>
+                            </div>
+                        </div>
+                        <!-- Q3 -->
+                        <div class="quiz-step hidden" data-step="3">
+                            <h3>3. Which format are you most comfortable with?</h3>
+                            <div class="options-grid">
+                                <button class="match-option" data-tag="video">Video Calls</button>
+                                <button class="match-option" data-tag="audio">Audio Only</button>
+                                <button class="match-option" data-tag="text">Text / Messaging</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="match-result" class="hidden result-display">
+                        <div class="loader mb-3"></div>
+                        <h3 class="analyzing-text">Analyzing your preferences...</h3>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- COMMUNITY SUPPORT SPACE -->
+            <div id="community" class="view-section fade-in hidden">
+                <div class="section-header">
+                    <h2>Community <span class="gradient-text">Support Space</span></h2>
+                    <p>A safe, anonymous forum to share experiences and coping strategies.</p>
+                </div>
+
+                <div class="community-layout">
+                    <!-- Create Post -->
+                    <div class="glass-panel create-post mb-4">
+                        <div class="post-header">
+                            <div class="avatar bg-gradient"><i class="fa-solid fa-user-astronaut"></i></div>
+                            <textarea id="new-post-content" class="glass-textarea no-border"
+                                placeholder="Share your thoughts anonymously..." rows="2"></textarea>
+                        </div>
+                        <div class="post-footer">
+                            <span class="anon-badge"><i class="fa-solid fa-mask"></i> Posting as Anonymous</span>
+                            <button id="submit-post-btn" class="btn primary-btn btn-small">Post</button>
+                        </div>
+                    </div>
+
+                    <!-- Feed -->
+                    <div class="feed-filter mb-3">
+                        <button class="filter-btn active">Trending</button>
+                        <button class="filter-btn">Newest</button>
+                        <button class="filter-btn">Success Stories</button>
+                    </div>
+
+                    <div id="community-feed" class="community-feed mt-3">
+                        <!-- Feed populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- WELLNESS-CHECK -->
+            <div id="checker" class="view-section fade-in hidden">
+                <div class="section-header">
+                    <h2>Mental Health <span class="gradient-text">Assessment</span></h2>
+                    <p>A short quiz to help understand your emotional state and need for support.</p>
+                </div>
+
+                <div class="glass-panel checker-container centered-panel">
+                    <div id="checker-quiz-area">
+                        <div class="progress-bar-container mb-4">
+                            <div class="progress-bar fill" style="width: 20%;"></div>
+                        </div>
+                        <h3 id="question-text" class="assessment-q">Over the last 2 weeks, how often have you been
+                            bothered by feeling down, depressed, or hopeless?</h3>
+                        <div class="checker-options mt-4">
+                            <button class="btn outline-btn checker-btn" data-score="0">Not at all</button>
+                            <button class="btn outline-btn checker-btn" data-score="1">Several days</button>
+                            <button class="btn outline-btn checker-btn" data-score="2">More than half the days</button>
+                            <button class="btn outline-btn checker-btn" data-score="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div id="checker-result-area" class="hidden text-center">
+                        <div class="result-icon-lg"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <h3 id="result-title">Assessment Complete</h3>
+                        <p id="result-desc" class="mt-3 mb-4">Based on your answers...</p>
+                        <div class="action-buttons justify-center mb-4">
+                            <button id="show-self-care-btn" class="btn primary-btn">Get Personalized Self-Care Plan</button>
+                            <button id="show-consult-btn" class="btn outline-btn">Consult a Doctor</button>
+                        </div>
+
+                        <div id="checker-self-care-section" class="hidden" style="text-align: left; margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                            <div class="section-header" style="text-align: center; margin-bottom: 25px;">
+                                <h2>Personalized <span class="gradient-text">Self-Care Plan</span></h2>
+                                <p>Activities tailored to your current mood and assessment results.</p>
+                            </div>
+                            <div id="care-plan-grid" class="care-plan-grid">
+                                <!-- Activities populated by JS -->
+                            </div>
+                        </div>
+                        
+                        <div id="checker-consult-section" class="hidden" style="text-align: left; margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                            <div class="section-header" style="text-align: center; margin-bottom: 25px;">
+                                <h2><span class="gradient-text">Consult</span> a Professional</h2>
+                                <p>Schedule a secure, confidential telepsychiatry appointment.</p>
+                            </div>
+                            <div class="consult-layout">
+                                <!-- Doctor List -->
+                                <div class="glass-panel doctor-directory">
+                                    <h3>Available Specialists</h3>
+                                    <div id="doctor-list" class="doctor-list">
+                                        <!-- Doctors populated via JS -->
+                                    </div>
+                                </div>
+
+                                <!-- Booking Form -->
+                                <div class="glass-panel booking-container">
+                                    <h3>Book Session</h3>
+
+                                    <div class="anonymous-toggle mb-4">
+                                        <label class="switch">
+                                            <input type="checkbox" id="anon-toggle">
+                                            <span class="slider round"></span>
+                                        </label>
+                                        <div class="toggle-text">
+                                            <strong>Anonymous Consultation</strong>
+                                            <span>Hide identity. Great for reducing stigma.</span>
+                                        </div>
+                                    </div>
+
+                                    <form id="booking-form" class="premium-form">
+                                        <!-- Standard Fields -->
+                                        <div id="standard-fields" class="form-group-wrapper">
+                                            <div class="form-group">
+                                                <label>Full Name</label>
+                                                <input type="text" id="b-name" class="glass-input" placeholder="e.g. John Doe"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email Address</label>
+                                                <input type="email" id="b-email" class="glass-input" placeholder="you@example.com"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Anonymous Fields -->
+                                        <div id="anonymous-fields" class="form-group-wrapper hidden">
+                                            <div class="alert-box warning-alert mb-3">
+                                                <i class="fa-solid fa-user-secret"></i>
+                                                You will be assigned a random Patient ID. The therapist will not know your identity.
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Patient ID (Auto-generated)</label>
+                                                <input type="text" id="b-anon-id" class="glass-input" value="NH-8472-X" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mt-3">
+                                            <label>Preferred Date</label>
+                                            <input type="date" class="glass-input" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>What would you like to discuss?</label>
+                                            <textarea class="glass-textarea" rows="4"
+                                                placeholder="Briefly describe your concerns..." required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn primary-btn w-100 mt-2">Request Appointment</button>
+                                    </form>
+
+                                    <div id="booking-success" class="hidden success-state text-center">
+                                        <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+                                        <h3>Confirmed!</h3>
+                                        <p>Your session has been scheduled successfully.</p>
+                                        <button class="btn primary-btn mt-3"><i class="fa-solid fa-video"></i> Join Waiting
+                                            Room</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RELAX ZONE -->
+            <div id="relax" class="view-section fade-in hidden">
+                <div class="section-header">
+                    <h2><span class="gradient-text">Relax</span> Zone</h2>
+                    <p>Unwind and clear your mind with these interactive calming exercises.</p>
+                </div>
+                
+                <!-- Game Selection Screen -->
+                <div id="relax-selection" class="text-center fade-in">
+                    <h3 class="mb-4" style="font-weight: 500;">Which game would you like to play today?</h3>
+                    <div class="quick-actions-grid" style="max-width: 800px; margin: 0 auto;">
+                        <div class="glass-card feature-card game-select-btn" data-game="breathing">
+                            <div class="card-icon bg-teal"><i class="fa-solid fa-lungs"></i></div>
+                            <h3>Breathing Sync</h3>
+                            <p>Follow a guided visual rhythm to calm your heartbeat and focus your mind.</p>
+                        </div>
+                        <div class="glass-card feature-card game-select-btn" data-game="bubble">
+                            <div class="card-icon bg-blue"><i class="fa-solid fa-soap"></i></div>
+                            <h3>Bubble Tap</h3>
+                            <p>Gently tap floating bubbles for a satisfying auditory and sensory distraction.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Game Area -->
+                <div id="relax-game-area" class="hidden fade-in">
+                    <button id="back-to-relax-btn" class="btn outline-btn btn-small mb-4"><i class="fa-solid fa-arrow-left"></i> Back to Selection</button>
+                    
+                    <!-- Breathing Sync Game -->
+                    <div id="game-breathing" class="glass-panel game-card text-center hidden" style="max-width: 600px; margin: 0 auto;">
+                        <h3>Breathing Sync</h3>
+                        <p class="game-desc mt-2 mb-4">Follow the circle. Inhale as it expands, exhale as it shrinks.</p>
+                        
+                        <div class="breathing-container">
+                            <div id="breathing-circle" class="breathing-circle">
+                                <span id="breathing-text">Ready</span>
+                            </div>
+                        </div>
+                        
+                        <div class="game-actions mt-4">
+                            <button id="btn-inhale" class="btn outline-btn"><i class="fa-solid fa-wind"></i> Inhale</button>
+                            <button id="btn-exhale" class="btn outline-btn"><i class="fa-solid fa-leaf"></i> Exhale</button>
+                        </div>
+                        
+                        <div class="score-display mt-4">
+                            <strong>Sync Score: <span id="breathing-score" class="gradient-text" style="font-size: 1.5rem;">0</span></strong>
+                            <p class="text-muted mb-0"><small>High Score: <span id="breathing-high-score">0</span></small></p>
+                            <p id="breathing-feedback" class="game-feedback text-muted" style="min-height: 24px; margin-top: 8px;"></p>
+                            <button id="btn-restart-breathing" class="btn outline-btn btn-small mt-2" style="border-width: 1px;"><i class="fa-solid fa-rotate-right"></i> Restart Sync</button>
+                        </div>
+                    </div>
+
+                    <!-- Bubble Tap Game -->
+                    <div id="game-bubble" class="glass-panel game-card text-center hidden" style="max-width: 800px; margin: 0 auto;">
+                        <h3>Bubble Tap</h3>
+                        <p class="game-desc mt-2 mb-3">Gently tap the glowing bubbles to pop them.</p>
+                        
+                        <div id="bubble-container" class="bubble-container gradient-border">
+                            <!-- Bubbles injected by JS -->
+                            <div class="bubble-overlay-msg hidden" id="bubble-overlay-msg">Relaxing...</div>
+                        </div>
+                        
+                        <div class="score-display mt-4">
+                            <strong>Bubbles Popped: <span id="bubble-score" class="gradient-text" style="font-size: 1.5rem;">0</span></strong>
+                            <p class="text-muted mb-0"><small>High Score: <span id="bubble-high-score">0</span></small></p>
+                            <button id="btn-restart-bubble" class="btn outline-btn btn-small mt-3" style="border-width: 1px;"><i class="fa-solid fa-rotate-right"></i> Restart Game</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTINGS & PREFERENCES -->
+            <div id="settings" class="view-section fade-in hidden">
+                <div class="section-header">
+                    <h2>Premium <span class="gradient-text">Settings</span></h2>
+                    <p>Customize your Neuro-Heal experience tailored strictly to you.</p>
+                </div>
+
+                <div class="settings-layout">
+                    <div class="glass-panel settings-card">
+                        <div class="settings-header" style="display: flex; gap: 15px; align-items: center;">
+                            <div class="settings-icon" style="width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: rgba(14, 165, 233, 0.1); color: var(--accent-cyan);"><i class="fa-solid fa-moon"></i></div>
+                            <div>
+                                <h3 style="margin-bottom: 3px; color: var(--text-main);">Appearance</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Switch between Serene Light and Midnight premium themes.</p>
+                            </div>
+                        </div>
+                        <div class="settings-action mt-4" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(14, 165, 233, 0.1);">
+                            <strong style="color: var(--text-main);">Premium Dark Mode</strong>
+                            <label class="premium-switch">
+                                <input type="checkbox" id="dark-mode-toggle">
+                                <span class="premium-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel settings-card mt-4">
+                        <div class="settings-header" style="display: flex; gap: 15px; align-items: center;">
+                            <div class="settings-icon" style="width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent-rose); background: rgba(244, 63, 94, 0.1);"><i class="fa-solid fa-bell"></i></div>
+                            <div>
+                                <h3 style="margin-bottom: 3px; color: var(--text-main);">Notifications</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Manage your daily mental health check-in reminders.</p>
+                            </div>
+                        </div>
+                        <div class="settings-action mt-4" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(14, 165, 233, 0.1);">
+                            <strong style="color: var(--text-main);">Daily Reminders</strong>
+                            <label class="premium-switch">
+                                <input type="checkbox" id="notification-toggle" checked>
+                                <span class="premium-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel settings-card mt-4">
+                        <div class="settings-header" style="display: flex; gap: 15px; align-items: center;">
+                            <div class="settings-icon" style="width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--warning); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <h3 style="margin-bottom: 3px; color: var(--text-main);">Data & Privacy</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Neuro-Heal stores your journal completely locally. You control your data.</p>
+                            </div>
+                        </div>
+                        <div class="settings-action mt-4" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(14, 165, 233, 0.1);">
+                            <div>
+                                <strong style="display:block; color: var(--text-main);">Clear App Data</strong>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Permanently delete all journal entries and mood logs.</span>
+                            </div>
+                            <button id="factory-reset-btn" class="btn outline-btn" style="border-color: rgba(239, 68, 68, 0.4); color: var(--danger);"><i class="fa-solid fa-trash-can"></i> Factory Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+
+
+
+    <!-- ═══════════════════════════════════════════════
+         AI CHATBOT — Floating Action Button + Panel
+         ═══════════════════════════════════════════════ -->
+
+    <!-- Floating Chat Button -->
+    <button id="chat-fab" class="chat-fab" title="Chat with Neura AI" aria-label="Open AI Chat">
+        <span class="chat-fab-icon"><i class="fa-solid fa-robot"></i></span>
+        <span class="chat-fab-label">AI Chat</span>
+        <span class="chat-fab-badge hidden" id="chat-badge">1</span>
+    </button>
+
+    <!-- Chat Panel -->
+    <div id="chat-panel" class="chat-panel" role="dialog" aria-label="AI Mental Health Chat" aria-hidden="true">
+
+        <!-- Panel Header -->
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar-wrapper">
+                    <i class="fa-solid fa-robot"></i>
+                    <span class="chat-online-dot"></span>
+                </div>
+                <div>
+                    <h4>Neura</h4>
+                    <span class="chat-status">AI Mental Health Companion</span>
+                </div>
+            </div>
+            <div class="chat-header-actions">
+                <button id="chat-clear-btn" class="chat-icon-btn" title="Clear chat">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+                <button id="chat-close-btn" class="chat-icon-btn" title="Close chat">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chat-messages" class="chat-messages" role="log" aria-live="polite">
+            <!-- Messages injected by JS -->
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="chat-typing" class="chat-typing hidden">
+            <div class="typing-avatar"><i class="fa-solid fa-robot"></i></div>
+            <div class="typing-bubble">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-area">
+            <textarea
+                id="chat-input"
+                class="chat-textarea"
+                placeholder="How are you feeling today…"
+                rows="1"
+                maxlength="1000"
+                aria-label="Type your message"
+            ></textarea>
+            <button id="chat-send-btn" class="chat-send-btn" title="Send message" aria-label="Send">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <!-- Disclaimer -->
+        <p class="chat-disclaimer">
+            <i class="fa-solid fa-shield-heart"></i>
+            Neura is an AI, not a licensed therapist. In crisis? Call a helpline immediately.
+        </p>
+    </div>
+
+    <!-- Chat panel backdrop -->
+    <div id="chat-backdrop" class="chat-backdrop hidden"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
